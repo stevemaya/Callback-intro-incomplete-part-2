@@ -28,38 +28,26 @@ const each = function (collection, iterator) {
 
 const filter = function (collection, test) {
   let result = [];
-
   each(collection, function (element) {
     if (test(element)){
       result.push(element);
     }
   })
   return result;
-
-
-  // for (let i = 0; i < collection.length; i++) {
-  //     if (test(collection[i]) % 2 === 1){
-  //         result.push(collection[i]);
-  //     }else(collection[i] % 2 === 0)
-  //   }
-  //     return result;
 }
 
 
 const map = (collection, iterator) => {
   let result = [];
-  //  loop through the collection and perform the iterator on each index
   for (let i = 0; i < collection.length; i++) {
-    // push the result of that into the result array
-    result.push(iterator(collection[i]))
+    result.push(iterator(collection[i]));
   }
-  return result
+  return result;
 };
 
 
 const reject = function (collection, test) {
   let result = [];
-
   filter(collection, function (element) {
     if (!test(element)){
       result.push(element);
@@ -71,11 +59,14 @@ const reject = function (collection, test) {
 
 const uniq = function (array) {
   let result = [];
-  
-
+  each(array, (num) => {
+    if(!result.includes(num)) {
+      result.push((num));
+    }
+  })
+return result;
 };
-const reduce = function (collection, iterator, accumulator) {};
-module.exports = {
+
   filter,
   reject,
   uniq,
